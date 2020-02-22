@@ -1,0 +1,139 @@
+\documentclass[12pt]{article}
+
+\usepackage{answers}
+\usepackage{setspace}
+\usepackage{graphicx}
+\usepackage{enumitem}
+\usepackage{multicol}
+\usepackage{mathrsfs}
+\usepackage{algorithm}
+\usepackage{algorithmic}
+\usepackage[margin=1in]{geometry} 
+\usepackage{amsmath,amsthm,amssymb}
+ 
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\R}{\mathbb{R}}
+
+\DeclareMathOperator{\sech}{sech}
+\DeclareMathOperator{\csch}{csch}
+ 
+\newenvironment{theorem}[2][Theorem]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{definition}[2][Definition]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{proposition}[2][Proposition]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{lemma}[2][Lemma]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{exercise}[2][Exercise]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{solution}[2][Solution]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}]}{\end{trivlist}}
+\newenvironment{problem}[2][Problem]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{question}[2][Question]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{corollary}[2][Corollary]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+ 
+\begin{document}
+ 
+% --------------------------------------------------------------
+%                         Start here
+% --------------------------------------------------------------
+ 
+\title{Discussion Notes}%replace with the appropriate homework number
+\author{Lei \& Yoon-G}
+ 
+\maketitle
+%Below is an example of the problem environment
+\begin{problem}{}
+    \item[] Given an array with n positive integer $A=[a_0, a_1,..., a_{n-1}]$ and a positive integer s, find the minimum length of A's sub-array that satisfies the summation of all its elements is equal to or larger than s.
+\end{problem}
+
+%Below is the solution environment
+\begin{solution}{}
+    \item[(I)] \textbf{Pseudo-code}
+    \begin{algorithm}
+        \capture {Find\_Min(A,n,s)}
+        \begin{algorithmic}
+            \REQUIRE $n,s>0$, and $A=[a_0,a_1,...,a_{n-1}]$, where $\forall 0\leq i\leq n-1, a_i>0$.
+            \ENSURE the minimum length of the sub-array A', which satisfies the summation of all the elements in A' is equal to or larger than s.
+            \STATE
+            \STATE $i\Leftarrow 0, j\Leftarrow 0, sum\Leftarrow a_0, Min\Leftarrow MaxInt$
+            \IF{$sum\geq s$}
+                \STATE $Min=1$
+            \ENDIF
+            \WHILE{$i<n$ and $j<n$}
+                \IF {$sum\geq s$}
+                    \IF{$j-i+1<Min$}
+                        \STATE $Min\Leftarrow j-i+1$
+                    \ENDIF
+                    \STATE $sum\Leftarrow sum-a_i$
+                    \STATE $i\Leftarrow i+1$
+                \ELSE
+                    \STATE $j\Leftarrow j+1$
+                    \STATE $sum\Leftarrow sum+a_j$
+                \ENDIF
+            \ENDWHILE
+            \RETURN $Min$
+        \end{algorithmic}
+    \end{algorithm}
+    \item[(II)] \textbf{State the Loop Invariant}
+    \item[] Define $M_i$, which is initialized as MaxInt, and
+    \[M_i=\min\{(r-i+1)|\sum_{k=i}^{r}{a_k}\geq s\}\]
+    \item[] At the beginning of each loop, when $i=i'$ and $j=j'$, we have
+    \begin{itemize}
+        \item[(a)] $sum=\sum_{k=i'}^{j'}{a_k}$
+        \item[(b)] if $sum\geq s$ \Rightarrow $M_i'=j'-i'+1$
+        \item[(c)] $Min=\min\{M_k|1\leq k\leq i’\}$
+    \end{itemize}
+    \item[(III)] \textbf{Prove the Initiation of the Loop Invariant}
+    \item[] At the beginning of the first loop, $i=j=sum=0, Min=MaxInt$(if $a_0<s$) or $1$ (if $a_0\geq s$).
+    \[\sum_{k=0}^{0}{a_k}=a_0=sum\Rightarrow Loop\ Invariant(a)\]
+    \item[] If $sum=a_0\geq s$, then obviously $M_0=1=j'-i'+1$ and if $sum=a_0<s$, then $M_0$ is still MaxInt $\Rightarrow Loop\ Invariant(b)$
+    \item[] If $sum=a_0\geq s$, then according to Loop Invariant (b) now we have $M_0=1=Min$, and if $sum=a_0<s$, then similarly we have $M_0=MaxInt=Min\Rightarrow Loop\ Invariant(c)$
+    \item[(IV)] \textbf{Prove the Maintenance of the Loop Invariant}
+    \item[] Assume the Loop Invariant holds at the beginning of the loop when $i=i'$ and $j=j'$, then we're going to prove that the loop invariant will still hold at the beginning of the next loop.
+    \begin{itemize}
+        \item[]\textbf{Case I: if $sum\geq s$}
+        \item[] then at the beginning of the next loop, the new value of $i,j$ will be $i'+1,j'$, and the new value of sum will be
+        \[sum-a_{i'}=\sum_{k=i'}^{j'}{a_k}-a_{i'}=\sum_{k=i'+1}^{j'}{a_k}\Rightarrow Loop\ Invariant(a)\]
+        \item[] Then we prove: if the new $sum=\sum_{k=i'+1}^{j'}{a_k}\geq s$, then $M_{i'+1}=j'-(i'+1)+1$ by contradiction.
+        \item[] Assume $\exists$ another sub-array $S_A=[a_{i'+1},...,a_x]$, where $M_{i'+1}=x-(i'+1)+1, i'+1\leq x\leq n-1$ and $x\neq j'$.
+        \item[] If $x>j$, then the length of $x-(i'+1)+1>j'-(i'+1)+1$, which leads to contradiction to the definition of $M_i'$.
+        \item[] If $x<j$, then 
+        \[\sum_{k=i'}^{x}{a_k}=a_{i'}+\sum_{k=i'+1}^{x}{a_k}\geq s\]
+        \[\Rightarrow M_{i'}\leq x-i'+1<j'-i'+1\]
+        \item[] which is contradicted to the Assumption that $M_{i'}=j'-i'+1$.
+        \item[] Accordingly, we can prove that in case I, if the new value $sum\geq s$, then $M_{i'+1}=j-(i'+1)+1\Rightarrow Loop\ Invariant(b)$
+        \item[] If $M_{i'}=j'-i'+1<Min$, then according to the pseudo-code, the new value of Min will be $M_{i'}$, which proves the Loop Invariant (c).
+        \item[]\textbf{Case II: if $sum<s$}
+        \item[] Similarly we can prove Loop Invariant (a).
+        \item[] Then we will prove Loop Invariant (b) by Contradiction.
+        \item[] Assume when $\sum_{k=i'}^{j'+1}{a_k}\geq s, \exists$ another sub-array $S_A=[a_i',...,a_x]$, such that $M_i'=x-i'+1$, where $i'+1\leq x\leq n-1$ and $x\neq j'+1$.
+        \item[] If $i'\leq x\leq j'$, then
+        \[\sum_{k=i'}^{j'}{a_k}=\sum_{k=i'}^{x}{a_k}+\sum_{k=x+1}^{j'}{a_k}\geq \sum_{k=i'}^{x}{a_k}\geq s\]
+        which is contradicted to the condition that $\sum_{k=i'}^{j'}{a_k}<s$.
+        \item[] If $j'+1<x\leq n-1$, then the length of $S_A=x-i'+1>(j'+1)-i'+1$, which is contradicted to the definition of $M_i'$.
+        \item[] Accordingly, we can prove that in case II, if the new summation $sum<s$, then $M_i'=(j'+1)-i'+1$.
+    \end{itemize}
+    \item[(V)] \textbf{Prove the Loop will Terminate}
+    \item[] The loop will terminate when $i\geq n$ or $j\geq n$. The initial value of i and j are both 0, and in each loop either i or j will increment, i.e. $i+j$ will increment. After $2n-1$ loops, $i+j=2n-1$. According to the Drawer Principle, either i or j will be equal to or greater than n, then we can prove the loop will terminate after finite times.
+    \item[(VI)] \textbf{Prove the Return Value is Proper when Termination}
+    \item[] The loop will terminate when $i\geq n$ or $j\geq n$, and since $i,j$ increment from 0, and will not increase by more than 1 at one loop, then the terminate condition is equivalent to $i=n$ or $j=n$.
+    \item[] If the loop terminates at the beginning of the loop when $i=n$, then according to the Loop Invariant(c), now we have
+    \[Min=\min\{M_k|0\leq k\leq n-1\}=min\{r-l+1|0\leq l\leq r\leq n-1, s.t. \sum_{k=i'}^{j'}{a_k}\}\geq s\}\]
+    \item[] which is the result we require.
+    \item[] If the loop terminates at the beginning of the loop when $j=n$, then we know that for $\forall x\geq i', \sum_{k=x}^{n-1}{a_k}\leq \sum_{k=i'}^{n-1}{a_k}<s\Rightarrow \forall x\geq i', M_x=MaxInt.$ Therefore we cannot find any $M_x$ for $x\geq i'$, such that $M_x$ could be smaller than the current $Min$. Then the current
+    \[Min=\min\{M_k|0\leq k\leq n-1\}=min\{r-l+1|0\leq l\leq r\leq i', s.t. \sum_{k=i'}^{j'}{a_k}\geq s\}\]
+    \[=min\{r-l+1|0\leq l\leq r\leq n-1, s.t. \sum_{k=i'}^{j'}{a_k}\geq s\}\]
+    \item[] which is the result we require.
+\end{solution}
+
+
+\pagebreak
+
+\end{document}
