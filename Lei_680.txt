@@ -1,0 +1,39 @@
+Leetcode 680: Valid Palindrome II
+
+Description: Given a non-empty string s, you may delete at most one character. Judge whether you can make it a palindrome.
+
+Example 1:
+
+Input: "aba"
+Output: True
+Example 2:
+
+Input: "abca"
+Output: True
+Explanation: You could delete the character 'c'.
+Note:
+
+The string will only contain lowercase characters a-z. The maximum length of the string is 50000.
+
+
+
+Solution(Lei):
+
+1. maintain a sliding window with start pointer of i and the end pointer of j, and initialize i and j as the first and the last character of the string
+
+2. the outer loop
+	2.1 terminate while i>=j, which means the sliding window is empty
+	2.2 for each loop, check if the character on the ith position and the character on the jth position are equal
+	2.3-1 if they're equal, then i<--i+1, and j<--j-1, shortening the window size by 2
+	2.3-2 if they're not equal, then we need to see if deleting a[i] or a[j] will make the string again a palinrome string
+		2.3-2.1 set a boolean variable, and start a inner loop, keeping a sliding window [l...r] which is initialized as [i+1...j]
+		2.3-2.2 set ... as [i...j-1]
+		2.3-2.3 if either of those 2 sliding window is a palindrome string, then we need to return true
+		2.3-2.4 otherwise there must be at least 2 characters that leads to dismatch, therefore we need to return false
+
+
+Evaluation:
+
+1. Time complexity: O(n)
+
+2. Space complexity: O(n)
