@@ -23,6 +23,7 @@ p.s. Yoon-G, try making some footprints here.
 -----------------------------------
 2020-2-23
 * Yoon-G provided 3 problems to be discussed
+	
 	(1) Implement Trie(Prefix tree): https://www.lintcode.com/problem/implement-trie-prefix-tree/description
 	
 	(2) Binary Tree Postorder Traversal: https://www.lintcode.com/problem/binary-tree-postorder-traversal/description
