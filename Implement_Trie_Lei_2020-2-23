@@ -1,0 +1,38 @@
+Leetcode 208: Implement Tree(Prefix Tree)
+
+mplement a trie with insert, search, and startsWith methods.
+
+Example:
+
+Trie trie = new Trie();
+
+trie.insert("apple");
+trie.search("apple");   // returns true
+trie.search("app");     // returns false
+trie.startsWith("app"); // returns true
+trie.insert("app");   
+trie.search("app");     // returns true
+Note:
+
+You may assume that all inputs are consist of lowercase letters a-z.
+All inputs are guaranteed to be non-empty strings.
+
+Solution:
+
+* currently blocked by runtime error: NullPointerException
+
+1.insert: traversing every character in the word string, and use a node p to record the current node that has been traversed.
+	1.1 If there is no node with the current prefix, then create a new node with the responding prefix and insert it in this place
+	1.2 If there is already a node with the prefix, then just replace p with the new node and keep traversing
+
+2.search: traversing every character in the word string, and use a node p to record the current node that has been traversed.
+	2.1 If there's no node with the current prefix, then return false
+	2.2 If there's node with the current prefix, then keep moving the pointer to the next one
+	2.3 after finishing the traversion for the word string, check if the matching node represents for a leaf node
+		2.3.1 If so, return true
+		2.3.2 If not, return false
+
+3.startwith: traversing every character in the prefix string, and use a node p to record the current node that has been traversed.
+	3.1 ...
+	3.2 ...
+	3.3 if finishing the traversion through the prefix string, then return true
