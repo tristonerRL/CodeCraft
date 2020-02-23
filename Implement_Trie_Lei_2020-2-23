@@ -36,3 +36,90 @@ Solution:
 	3.1 ...
 	3.2 ...
 	3.3 if finishing the traversion through the prefix string, then return true
+
+
+Codes:
+
+class Trie {
+    public class TreeNode{
+        private String prefix; // the char 
+        private boolean ifLeaf; // to record if this could serve as a leaf
+        public TreeNode[] children=new TreeNode[26];
+        public String getKey(){
+            return this.prefix;
+        }
+        public void setKey(String newKey){
+            this.prefix=newKey;
+        }
+        public boolean getIfLeaf(){
+            return this.ifLeaf;
+        }
+        public void setIfLeaf(boolean flag){
+            this.ifLeaf=flag;
+        }
+        public TreeNode(String c,boolean flag){ //constuctor
+            this.setKey(c);
+            this.setIfLeaf(flag);
+            for (int i=0;i<26;i++)
+                children[i]=null;
+        }
+    }
+    
+    public TreeNode root;
+    
+    /** Initialize your data structure here. */
+    public Trie() {
+        this.root=new TreeNode("",false);
+    }
+    
+    /** Inserts a word into the trie. */
+    public void insert(String word) {
+        TreeNode p=this.root;
+        for (int i=0;i<word.length();i++){
+            int c=(int) word.charAt(i)-(int)'a';
+            if (p.children[c]!=null)
+                p=p.children[c];
+            else{
+                p.children[c]=new TreeNode(p.prefix+word.charAt(i),false);
+                p=p.children[c];
+            }
+        }
+        p.setIfLeaf(true);
+    }
+    
+    /** Returns if the word is in the trie. */
+    public boolean search(String word) {
+        TreeNode p=this.root;
+        for (int i=0;i<word.length();i++){
+            int c=(int) word.charAt(i)-(int)'a';
+            if (p.children[c]==null)
+                return false;
+            else
+                p=p.children[c];
+        }
+        if (p.getIfLeaf())
+            return true;
+        else 
+            return false;
+    }
+    
+    /** Returns if there is any word in the trie that starts with the given prefix. */
+    public boolean startsWith(String prefix) {
+        TreeNode p=this.root;
+        for (int i=0;i<prefix.length();i++){
+            int c=(int) prefix.charAt(i)-(int)'a';
+            if (p.children[c]==null)
+                return false;
+            p=p.children[c];
+        }
+        return true;
+    }
+}
+
+/**
+ * Your Trie object will be instantiated and called as such:
+ * Trie obj = new Trie();
+ * obj.insert(word);
+ * boolean param_2 = obj.search(word);
+ * boolean param_3 = obj.startsWith(prefix);
+ */
