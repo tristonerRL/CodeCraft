@@ -1,0 +1,77 @@
+Leetcode 425: Word Squares
+
+Given a set of words (without duplicates), find all word squares you can build from them.
+
+A sequence of words forms a valid word square if the kth row and column read the exact same string, where 0 ≤ k < max(numRows, numColumns).
+
+For example, the word sequence ["ball","area","lead","lady"] forms a word square because each word reads the same both horizontally and vertically.
+
+b a l l
+a r e a
+l e a d
+l a d y
+Note:
+
+There are at least 1 and at most 1000 words.
+All words will have the exact same length.
+Word length is at least 1 and at most 5.
+Each word contains only lowercase English alphabet a-z.
+Example 1:
+
+Input:
+["area","lead","wall","lady","ball"]
+
+Output:
+[
+  [ "wall",
+    "area",
+    "lead",
+    "lady"
+  ],
+  [ "ball",
+    "area",
+    "lead",
+    "lady"
+  ]
+]
+
+Explanation:
+The output consists of two word squares. The order of output does not matter (just the order of words in each word square matters).
+Example 2:
+
+Input:
+["abat","baba","atan","atal"]
+
+Output:
+[
+  [ "baba",
+    "abat",
+    "baba",
+    "atan"
+  ],
+  [ "baba",
+    "abat",
+    "baba",
+    "atal"
+  ]
+]
+
+Explanation:
+The output consists of two word squares. The order of output does not matter (just the order of words in each word square matters).
+
+
+Train of thoughts(not yet succeeded):
+
+1. The main idea is 2 nested Depth First Search algothms.
+	1.1 The first level of depth first search DFS(i) is searching for the possible string on the ith row, when there's already strings filled into the 1~i-1 th row of the matrix
+	1.2 The second level of depth first search DFS'(j) is searching for the possible character on the jth column when dealing with the ith row's DFS, and assume all the characters in matrix[i,1...j-1] are filled
+
+2. The other mechanism is to build up a 26-degree-tree
+	2.1 each inner node represents for a valid prefix of the strings
+	2.2 the root node represents for ""
+	2.3 each leaf node represents for one of the strings that have been givin
+		2.3.1 Should we consider the scenario that there might be some strings given are same?
+	2.4 since each node has multiple children, we can use an array with size of 26 to record the children of a certain node.
+
+3. When doing DFS and DFS', some global variables are used to record the state of the current unfinished matrix
+	3.1 the array colume[j] records the current prefix ""
