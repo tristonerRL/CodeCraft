@@ -9,6 +9,7 @@ ___________________________________
 * Discussed the problem of finding the minimum length of subarray s.t. the summation of all the elements in the subarray is no less than a given s.
 
 ---Lei
+
 -----------------------------------
 2020-2-22
 * Discussed the combination problem
@@ -17,7 +18,8 @@ ___________________________________
 
 ---Lei
 
-p.s. Yoon-G, try making some footprints here. Uh, what about HELLOWORLD?
+p.s. Yoon-G, try making some footprints here.
+
 -----------------------------------
 2020-2-23
 * Yoon-G provided 3 problems to be discussed
