@@ -23,9 +23,9 @@ p.s. Yoon-G, try making some footprints here.
 -----------------------------------
 2020-2-23
 * Yoon-G provided 3 problems to be discussed
-	1)Implement Trie(Prefix tree): https://www.lintcode.com/problem/implement-trie-prefix-tree/description
-	2)Binary Tree Postorder Traversal: https://www.lintcode.com/problem/binary-tree-postorder-traversal/description
-	3)Internal working of Hashmap in Java: https://www.geeksforgeeks.org/internal-working-of-hashmap-java/
+	(1) Implement Trie(Prefix tree): https://www.lintcode.com/problem/implement-trie-prefix-tree/description
+	(2) Binary Tree Postorder Traversal: https://www.lintcode.com/problem/binary-tree-postorder-traversal/description
+	(3) Internal working of Hashmap in Java: https://www.geeksforgeeks.org/internal-working-of-hashmap-java/
 * Good luck to Yoon-G's proposal and presentation and Lei's project and paper reading!
 
 ---Lei
