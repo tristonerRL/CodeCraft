@@ -34,4 +34,18 @@ p.s. Yoon-G, try making some footprints here.
 ---Lei
 
 Hello World!
+
 ---Yoon-G
+
+* Lei uploaded his solution for Implement Trie, and realized that his solution for Find_min_rotated_sorted_array is less than acceptable.
+
+* Yoon-G decided to work on binary search questions on the following days
+
+-----------------------------------
+2020-2-24
+
+* Yoon-G has assigned 3 binary search questions
+
+* Lei is working on his Network Programming project and Yoon-G is working on the proposal for Software Engineering. They're both regretful for not having finished those work earlier. They're both trying hard to finish their handy jobs ASAP s.t. they may have time to exercise as well as to keep working on daily challenges
+
+* Good luck for Lei's project and Yoon-G's proposal and presentation
