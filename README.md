@@ -49,3 +49,10 @@ Hello World!
 * Lei is working on his Network Programming project and Yoon-G is working on the proposal for Software Engineering. They're both regretful for not having finished those work earlier. They're both trying hard to finish their handy jobs ASAP s.t. they may have time to exercise as well as to keep working on daily challenges
 
 * Good luck for Lei's project and Yoon-G's proposal and presentation
+
+----------------------------------
+2020-2-25
+
+* Lei is working on the project of computer networks, and Yoon-G is working on the proposal and presentation. So the daily discussion has been interrupted for one day.
+
+* Lei felt depressed for not able to finish his project of networks, but this may act as a reminder for him that he has to work harder on daily things if he's expecting for more payback.
