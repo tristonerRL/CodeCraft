@@ -67,11 +67,17 @@ Hello World!
 		$ be careful with the situation that the series are monotocal
 
 	(3) Calculate the k-diff pairs
+
 		$ space complexity: O(n)
+
 		$ time complexity: O(n^2)
+
 		$ solution (by Lei)
+
 			I. Notate the given array as arr, and build another 2 arrays a[] and c[], a[] notating the elements that have shown up in the array by increasing order of the content, and c[] notating the corresponding times of each element showing up in the array arr. Also notate num of the number of how many different number have shown up in the arr[].
+
 			II. Outer loop: traverse the array arr, for each element arr[i], use binary search to find the index (returned as position) in a[0...num-1] s.t. position is the smallest index that satisfying a[1..position-1] are all smaller or equal to arr[i]. Then we detect if there's already an element in the array with this number arr[i], if so, increment c[i], otherwise create a new element and insert it the index of position. This calls for nlogn times of searching and n^2 time of element moving (worst case).
+
 			III. Traverse the array of a[], detecting the k-diff pairs. If k=0, then we only calculate the number of numbers with showing up times c[i]>1. If k>0, then for each a[i], we can use binary search to find the exact i' that i'-i=k, if there's such i, then we increment the counting number.
 
 		$ Yoon-G has solution with time complexity of O(nlogn) and Space Comlexity of O(M), M=10^7. Seems better.
@@ -79,4 +85,4 @@ Hello World!
 ----------------------------------
 2020-2-26
 
-* 
+* Yoon-G felt anxious today and he canceled today's dicussion unilaterally.
