@@ -33,4 +33,12 @@ class SortedArraySquares {
   }
 }
 
+Time Complexity
+
+iterating all the array element once, so the time complexity will be O(N)
+
+Space Complexity
+
+using one output array, the space complexity will be O(N);
+
 
