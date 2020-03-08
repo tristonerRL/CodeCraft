@@ -1,0 +1,13 @@
+public int numSubarrayProductLessThanK(int[] nums, int k) {
+        // Write your code here
+        int res = 0;
+        int product = 1, windowStart = 0;
+        for(int windowEnd = 0; windowEnd < nums.length; windowEnd++) {
+            product *= nums[windowEnd];
+            while(product >= k && windowStart <= windowEnd) {
+                product /= nums[windowStart++];
+            }
+            res += (windowEnd - windowStart + 1);
+        }
+        return res;
+    }
