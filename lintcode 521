@@ -12,10 +12,7 @@ public class Solution {
         int slow = 0;
         for(int i = 1; i < nums.length; i++) {
             if(nums[i] != nums[slow]) {
-                slow++;
-                int temp = nums[slow];
-                nums[slow] = nums[i];
-                nums[i] = temp;
+                nums[++slow] = nums[i];
             }
         }
         return slow + 1;
