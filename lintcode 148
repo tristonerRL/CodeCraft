@@ -1,0 +1,24 @@
+public class Solution {
+    /**
+     * @param nums: A list of integer which is 0, 1 or 2 
+     * @return: nothing
+     */
+    public void sortColors(int[] nums) {
+        // write your code here
+        int red = 0, blue = nums.length - 1;
+        for(int i = 0; i <= blue; i++) {
+            if(nums[i] == 0) {
+                int temp = nums[red];
+                nums[red] = nums[i];
+                nums[i] = temp;
+                red++;
+            } else if(nums[i] == 2) {
+                int temp = nums[blue];
+                nums[blue] = nums[i];
+                nums[i] = temp;
+                blue--;
+                i--;
+            }
+        }
+    }
+}
