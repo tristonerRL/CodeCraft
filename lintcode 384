@@ -1,0 +1,27 @@
+public class Solution {
+    /**
+     * @param s: a string
+     * @return: an integer
+     */
+    public int lengthOfLongestSubstring(String s) {
+        // write your code here
+        if(s == null | s.length() == 0) {
+            return 0;
+        }
+        int windowStart = 0;
+        int windowEnd = 0;
+        int res = Integer.MIN_VALUE;
+        HashSet<Character> hash = new HashSet<>();
+        while(windowEnd < s.length()) {
+            char c = s.charAt(windowEnd);
+            if(!hash.contains(c)) {
+                windowEnd++;
+                hash.add(c);
+                res = Math.max(res, hash.size());
+            } else {
+                hash.remove(s.charAt(windowStart++));
+            }
+        }
+        return res;
+    }
+}
