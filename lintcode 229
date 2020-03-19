@@ -1,0 +1,20 @@
+public class Solution {
+    /*
+     * @param stk: an integer stack
+     * @return: void
+     */
+    public void stackSorting(Stack<Integer> stk) {
+        // write your code here
+        Stack<Integer> helper = new Stack<>();
+        while(!stk.isEmpty()) {
+            helper.push(stk.pop());
+        }
+        while(!helper.isEmpty()) {
+            int v = helper.pop();
+            while(!stk.isEmpty() && stk.peek() > v) {
+                helper.push(stk.pop());
+            }
+            stk.push(v);
+        }
+    }
+}
