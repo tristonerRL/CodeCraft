@@ -103,3 +103,9 @@ Hello World!
 	(3) given an array of characters where each character represents a fruit tree, use 2 baskets to pick fruit, each basket only able to contain one type of fruit. find the maxinum fruit that can be collected
 	
 		* use one variable to calculate the number of fruit A in the sliding window, and one variable to store the type of the other type of character inside the sliding window.
+		
+----------------------------------
+2020-11-08
+
+* Yoon-G will upload the solution of "Searching in sorted 2-D array" and three other questions about array.
+
