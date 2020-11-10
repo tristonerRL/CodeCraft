@@ -112,5 +112,5 @@ Hello World!
 ----------------------------------
 2020-11-10
 
-* Yoon-G will upload the solution of "Print matrix in Spiral order" and another question about array.
-
+* Yoon-G will upload the solution of "Print matrix in Spiral order" and two other question about array.
+* He is afraid of 996 working hour system
