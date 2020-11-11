@@ -118,5 +118,5 @@ Hello World!
 ----------------------------------
 2020-11-11
 
-* Yoon-G will upload the solution of "Letter combination of a phone number" and two other question about array.
+* Yoon-G will upload the solution of "Letter combination of a phone number" and two other question about depth first search.
 
